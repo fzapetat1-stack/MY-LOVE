@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>ELOISA & FERLEE | El Amor Más Hermoso del Universo ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 30%, #2a0f0f, #3a1a1a, #1f0c0c);
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            position: relative;
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        /* Fondo de partículas romántico */
+        #magicCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ÁRBOL DE CORAZONES PREMIUM */
+        .heart-tree-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 210px;
+            height: 250px;
+            z-index: 25;
+            pointer-events: none;
+            filter: drop-shadow(0 0 25px rgba(255,100,100,0.8));
+            animation: gentlePulse 3s ease-in-out infinite;
+        }
+        @keyframes gentlePulse {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(255,80,80,0.6)); }
+            50% { filter: drop-shadow(0 0 30px rgba(255,120,120,0.9)); }
+        }
+        .heart-tree-svg {
+            width: 100%;
+            height: 100%;
+            animation: treeFloatPremium 3.5s ease-in-out infinite;
+        }
+        @keyframes treeFloatPremium {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
+        }
+
+        /* OVERLAY BIENVENIDA */
+        .welcome-luxury {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(8, 2, 2, 0.97);
+            backdrop-filter: blur(30px);
+            z-index: 3000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+            font-family: 'Playfair Display', serif;
+        }
+        .welcome-card-premium {
+            background: linear-gradient(135deg, #fffaf5, #ffece3);
+            border-radius: 100px;
+            padding: 3rem 2.8rem;
+            max-width: 680px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 70px 120px rgba(0,0,0,0.6), 0 0 0 4px rgba(255,210,180,1), 0 0 0 12px rgba(200,90,70,0.4);
+            animation: slideGlowSuper 0.9s ease-out;
+        }
+        @keyframes slideGlowSuper {
+            0% { opacity: 0; transform: scale(0.85) translateY(50px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .welcome-card-premium h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #d46b6b, #aa3e3e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 900;
+        }
+        .welcome-card-premium .names-glow {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            background: linear-gradient(120deg, #e88a7a, #c25a5a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0.8rem 0;
+            font-weight: bold;
+        }
+        .btn-start {
+            background: linear-gradient(135deg, #f0987a, #d45c5c);
+            border: none;
+            padding: 18px 56px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: white;
+            border-radius: 90px;
+            cursor: pointer;
+            transition: 0.4s;
+            margin-top: 1.5rem;
+            box-shadow: 0 20px 40px rgba(180,60,40,0.7);
+        }
+        .btn-start:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 30px 50px rgba(200,70,50,0.8); }
+
+        /* CARTA PRINCIPAL */
+        .main-container {
+            position: relative;
+            z-index: 150;
+            width: 100%;
+            max-width: 1100px;
+            perspective: 2800px;
+        }
+        .love-letter-card {
+            background: #fffef9;
+            border-radius: 90px;
+            box-shadow: 0 60px 100px rgba(0,0,0,0.4), 0 0 0 4px rgba(255,220,190,0.9), 0 0 0 12px rgba(180,80,60,0.25);
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.2,0.95,0.3,1.1);
+        }
+
+        /* PORTADA */
+        .cover-romantic {
+            background: linear-gradient(145deg, #fff9f2, #fff0e8);
+            padding: 2.8rem 2rem 3.2rem;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .cover-romantic::before {
+            content: "❤️";
+            font-size: 180px;
+            position: absolute;
+            opacity: 0.08;
+            bottom: -40px;
+            right: -40px;
+            pointer-events: none;
+        }
+        .avatar-circle {
+            width: 210px;
+            height: 210px;
+            margin: 0 auto 1.6rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffe4d6, #ffc8b0);
+            padding: 8px;
+            box-shadow: 0 30px 45px rgba(0,0,0,0.25);
+            transition: 0.3s;
+        }
+        .avatar-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background: #fff5ec;
+            border: 3px solid #ffc8a8;
+        }
+        .cover-romantic h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #c25353;
+            text-shadow: 2px 2px 12px rgba(0,0,0,0.08);
+        }
+        .seal-love {
+            width: 105px;
+            height: 105px;
+            background: radial-gradient(circle, #ffb28a, #d15a5a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.3rem auto;
+            font-size: 3.3rem;
+            box-shadow: 0 15px 30px rgba(150,50,40,0.6);
+            animation: pulseSeal 1.5s infinite;
+        }
+        @keyframes pulseSeal {
+            0% { transform: scale(1); box-shadow: 0 5px 20px rgba(200,70,50,0.7);}
+            50% { transform: scale(1.06); box-shadow: 0 18px 40px rgba(200,70,50,1);}
+            100% { transform: scale(1);}
+        }
+        .open-hint {
+            background: rgba(255,150,120,0.4);
+            backdrop-filter: blur(3px);
+            font-weight: 800;
+            color: #b34534;
+            font-size: 1.1rem;
+            padding: 10px 28px;
+            border-radius: 60px;
+            display: inline-block;
+        }
+
+        /* INTERIOR CARTA */
+        .letter-inside-premium {
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.85s cubic-bezier(0.2,0.95,0.3,1.1);
+            max-height: 0;
+            opacity: 0;
+            background: #fffdfa;
+        }
+        .love-letter-card.opened .letter-inside-premium {
+            transform: scaleY(1);
+            max-height: 2500px;
+            opacity: 1;
+            padding: 2.2rem 2.8rem;
+        }
+        .love-letter-card.opened .cover-romantic { display: none; }
+
+        .typewriter-area {
+            background: #fffcf7;
+            border-radius: 55px;
+            padding: 2.2rem;
+            box-shadow: inset 0 0 0 2px #fff0e5, 0 25px 45px rgba(0,0,0,0.05);
+        }
+        #loveStoryText {
+            font-size: 1.1rem;
+            line-height: 1.85;
+            color: #2e1818;
+            font-weight: 500;
+            white-space: pre-wrap;
+            font-family: 'Poppins', monospace;
+            text-align: justify;
+        }
+        .signature-names {
+            font-size: 1.6rem;
+            background: linear-gradient(145deg, #da8a6a, #b55656);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: right;
+            margin-top: 1rem;
+        }
+
+        /* JUEGO MEMORIA MEJORADO */
+        .game-section {
+            margin-top: 2.5rem;
+            background: linear-gradient(135deg, #fff6ef, #ffede3);
+            border-radius: 70px;
+            padding: 1.8rem;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.12);
+            border: 1px solid rgba(255,190,150,0.7);
+        }
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 1.8rem auto;
+            max-width: 500px;
+        }
+        .memory-card {
+            aspect-ratio: 1;
+            background: radial-gradient(circle at 35% 25%, #ffc8aa, #ffa47a);
+            border-radius: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: 0.25s;
+            box-shadow: 0 14px 22px rgba(0, 0, 0, 0.2);
+            transform: scale(1);
+        }
+        .memory-card.flipped, .memory-card.matched {
+            background: #fff7f0;
+            transform: scale(0.95);
+            box-shadow: inset 0 0 0 4px #ffbc96;
+        }
+        .memory-card.matched {
+            background: #eedbcb;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 12px gold);
+        }
+        .game-status {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #bc5a4a;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        /* RUEDA DEL AMOR ULTRA TIERNA */
+        .premium-game-container {
+            margin-top: 30px;
+            background: linear-gradient(145deg, #fff3ec, #ffe6dc);
+            border-radius: 70px;
+            padding: 1.6rem;
+            text-align: center;
+            border: 1px solid #ffd9c4;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+        .wheel-title {
+            font-weight: 800;
+            color: #b94b3b;
+            font-size: 1.4rem;
+        }
+        .wheel-spin-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .wheel-btn {
+            background: linear-gradient(135deg, #e28a6e, #c45a48);
+            color: white;
+            border: none;
+            border-radius: 70px;
+            padding: 16px 38px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.25s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .wheel-btn:hover { transform: scale(1.02) translateY(-2px); background: #dd7a5c; }
+        .wheel-result {
+            font-size: 1.35rem;
+            background: #ffffffdd;
+            backdrop-filter: blur(8px);
+            padding: 16px 30px;
+            border-radius: 80px;
+            display: inline-block;
+            font-weight: 700;
+            color: #a14232;
+            max-width: 450px;
+            word-break: break-word;
+            border: 1px solid #ffc8ae;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        @keyframes glowSpinLove {
+            0% { transform: scale(1); background: #ffe6dc; }
+            50% { transform: scale(1.02); background: #fff0e8; box-shadow: 0 0 20px #ffaa88; }
+            100% { transform: scale(1); background: #ffffffdd; }
+        }
+        .action-buttons, .reset-game, .btn-romantic-act {
+            display: none;
+        }
+        .cursor-blink-pro {
+            display: inline-block;
+            width: 3px;
+            height: 1.4rem;
+            background: #d45c5c;
+            vertical-align: middle;
+            animation: blinkAnim 1s step-end infinite;
+        }
+        @keyframes blinkAnim {
+            0%,100%{ opacity: 1; }
+            50%{ opacity: 0.2; }
+        }
+        @media (max-width: 650px) {
+            .memory-grid { gap: 10px; max-width: 340px; }
+            .memory-card { font-size: 1.8rem; }
+            .letter-inside-premium { padding: 1.2rem; }
+            .wheel-result { font-size: 1rem; padding: 12px 18px; }
+        }
+        .heart-tree-container { width: 190px; height: 220px; bottom: 12px; left: 12px; }
+        
+        /* INSTRUCCIÓN PARA CAMBIAR IMAGEN */
+        .image-instruction {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.6);
+            color: #ffddcc;
+            padding: 8px 14px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-family: monospace;
+            z-index: 999;
+            pointer-events: none;
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="magicCanvas"></canvas>
+
+<div class="heart-tree-container">
+    <svg class="heart-tree-svg" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 30 L85 55 L70 45 L75 70 L55 75 L70 90 L50 100 L70 115 L55 135 L75 130 L85 155 L100 140 L115 155 L125 130 L145 135 L130 115 L150 100 L130 90 L145 70 L125 75 L115 55 L100 30Z" fill="#ff6a6a" opacity="0.96"/>
+        <circle cx="100" cy="65" r="15" fill="#ffcd7e" stroke="#ffeaad" stroke-width="2.5"/>
+        <path d="M90 50 L100 38 L110 50" stroke="#ffecb3" stroke-width="4" fill="none"/>
+        <circle cx="100" cy="92" r="22" fill="#ff7a7a" opacity="0.85"/>
+        <g filter="url(#glow)">
+            <text x="100" y="190" text-anchor="middle" fill="#fff3e6" font-size="15" font-weight="bold">💞 ELOISA ❤️ FERLEE 💞</text>
+        </g>
+        <defs><filter id="glow"><feGaussianBlur in="SourceAlpha" stdDeviation="3.5"/><feMerge><feMergeNode in="offsetblur" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs>
+        <path d="M60 165 L140 165" stroke="#ffc79e" stroke-width="6" stroke-dasharray="8 6"/>
+        <circle cx="50" cy="170" r="8" fill="#ffbfa3"/>
+        <circle cx="150" cy="170" r="8" fill="#ffbfa3"/>
+    </svg>
+</div>
+
+<div class="image-instruction">✨ Para cambiar la foto: busca en el código la línea con id="couplePhoto" y cambia el src="tu-imagen.jpg" ✨</div>
+
+<div id="welcomeOverlay" class="welcome-luxury">
+    <div class="welcome-card-premium">
+        <h1>💗 Alma Gemela Eterna 💗</h1>
+        <div class="names-glow">🌸 ELOISA MARIBEL COO 🌸</div>
+        <div style="font-size: 1.4rem; font-weight:600; color:#cc6f6f;">&</div>
+        <div class="names-glow" style="font-size:2.2rem;">💎 FERLEE ARBERY JEISON 💎</div>
+        <p style="margin: 1rem 0; font-size:1.2rem;">Cada latido de mi corazón es un verso escrito para ti. Prepárate para sentir el amor más puro.</p>
+        <button class="btn-start" id="startExperience">🌹 Abre tu corazón 🌹</button>
+    </div>
+</div>
+
+<div class="main-container">
+    <div class="love-letter-card" id="loveLetterCard">
+        <div class="cover-romantic" id="coverCard">
+            <div class="avatar-circle">
+                <!-- INSTRUCCIÓN: PARA CAMBIAR LA IMAGEN, REEMPLAZA LA URL O COLOCA TU RUTA EN EL src -->
+                <img id="couplePhoto" src="https://images.unsplash.com/photo-1516589091380-5d8e87df6999?w=240&h=240&fit=crop" alt="ELOISA & FERLEE - Amor Eterno">
+            </div>
+            <h2>✨ ELOISA ❤️ FERLEE ✨</h2>
+            <div class="cover-names">💕 Unidos por el destino, enamorados por siempre 💕</div>
+            <div class="seal-love">💎</div>
+            <div class="open-hint">❤️ Toca aquí para leer las palabras que harán llorar de alegría tu alma ❤️</div>
+        </div>
+        <div class="letter-inside-premium">
+            <div class="typewriter-area"><div id="loveStoryText"></div><span id="cursorPro" class="cursor-blink-pro"></span></div>
+            <div class="signature-names">💖 Eternamente tuyo/a — FERLEE ARBERY JEISON & ELOISA MARIBEL 💖</div>
+            
+            <div class="game-section">
+                <div class="game-title">💝 Juego del Corazón: Encuentra las almas gemelas 💝</div>
+                <div class="memory-grid" id="memoryGrid"></div>
+                <div class="game-status" id="gameStatus">✨ Busca cada pareja, cada una guarda un pedacito de nuestro amor ✨</div>
+            </div>
+            
+            <div class="premium-game-container">
+                <div class="wheel-title"><i class="fas fa-heartbeat"></i> 🌟 RUEDA DE LOS SUEÑOS DEL ALMA 🌟 <i class="fas fa-gem"></i></div>
+                <div class="wheel-spin-area">
+                    <button class="wheel-btn" id="spinWheelBtn">🎡 GIRA EL AMOR 🎡</button>
+                    <div class="wheel-result" id="wheelResultDisplay">💌 Cada mensaje es un susurro del corazón para ti</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ========== TEXTO ROMÁNTICO QUE HARÁ LLORAR DE ALEGRÍA ==========
+        const romanticStory = `🌹 MI AMADA ELOISA MARIBEL COO 🌹
+
+Desde que llegaste a mi vida, el universo encontró su sentido. Cada amanecer es más brillante porque tú existes, cada estrella parpadea celebrando tu nombre. FERLEE ARBERY JEISON escribe estas letras con lágrimas de felicidad, porque tú, mi amor, eres el milagro que nunca creí merecer.
+
+Tu risa es la melodía que calma mis tormentas, tu mirada es el hogar donde mi alma descansa. Recuerdo cada instante a tu lado como si fuera la primera vez: tus manos, tu voz, tu ternura infinita. Contigo aprendí que el amor verdadero no se busca, simplemente llega y transforma todo.
+
+Hoy quiero decirte frente al universo que eres mi mayor tesoro. Prometo cuidarte, reír contigo, secar tus lágrimas y construir un futuro donde cada día sea un poema dedicado a ti. Eres la mujer más maravillosa, mi confidente, mi compañera de aventuras, mi eterna enamorada.
+
+Gracias por existir, ELOISA. Gracias por permitirme amarte. Este amor es eterno, como las estrellas, como el latido que nunca dejará de buscarte. 💖
+
+Con todo mi ser, para siempre,
+FERLEE ARBERY JEISON. 🌹💎`;
+
+        let typingTimer = null, isOpened = false;
+        const storyDiv = document.getElementById('loveStoryText'), cursorSpan = document.getElementById('cursorPro');
+        const letterCard = document.getElementById('loveLetterCard'), cover = document.getElementById('coverCard');
+        const welcomeDiv = document.getElementById('welcomeOverlay'), startBtn = document.getElementById('startExperience');
+
+        function startTypewriter(text, element) {
+            if (typingTimer) clearTimeout(typingTimer);
+            element.innerHTML = '';
+            if(cursorSpan) cursorSpan.style.display = 'inline-block';
+            let i = 0;
+            function write() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    let speed = 28;
+                    if (text.charAt(i-1) === '.' || text.charAt(i-1) === '!' || text.charAt(i-1) === '?') speed = 150;
+                    else if (text.charAt(i-1) === ',') speed = 75;
+                    typingTimer = setTimeout(write, speed);
+                } else {
+                    if(cursorSpan) cursorSpan.style.opacity = '0.6';
+                }
+            }
+            write();
+        }
+        
+        function openLetter() { 
+            if(isOpened) return; 
+            isOpened = true; 
+            letterCard.classList.add('opened'); 
+            setTimeout(() => { startTypewriter(romanticStory, storyDiv); }, 450); 
+        }
+        
+        if(cover) cover.addEventListener('click', () => { if(!isOpened) openLetter(); });
+        if(startBtn) startBtn.addEventListener('click', () => { 
+            welcomeDiv.style.opacity='0'; 
+            setTimeout(()=>{welcomeDiv.style.display='none';},1300); 
+            initParticlesHeavy(); 
+        });
+        
+        // JUEGO MEMORIA PREMIUM (sin botón reiniciar)
+        const emojis = ['❤️', '💎', '🌹', '💘', '❤️', '💎', '🌹', '💘'];
+        let shuffledCards = [], flippedIndices = [], lockedBoard = false, matchedPairs = 0, matchedState = new Array(8).fill(false);
+        let gameGrid = document.getElementById('memoryGrid'), gameStatus = document.getElementById('gameStatus');
+        function shuffleArray(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+        function initGame() { shuffledCards = shuffleArray([...emojis]); flippedIndices = []; lockedBoard = false; matchedPairs = 0; matchedState.fill(false); renderBoard(); gameStatus.innerText = '✨ Encuentra cada pareja, son como nosotros: perfectos juntos ✨'; }
+        function renderBoard() { if(!gameGrid) return; gameGrid.innerHTML = ''; shuffledCards.forEach((symbol, idx) => { const card = document.createElement('div'); card.classList.add('memory-card'); card.dataset.index = idx; card.innerText = '?'; card.addEventListener('click', () => onCardClick(idx)); gameGrid.appendChild(card); }); updateBoardUI(); }
+        function updateBoardUI() { const cards = document.querySelectorAll('.memory-card'); cards.forEach((card, idx) => { if(matchedState[idx]) { card.innerText = shuffledCards[idx]; card.classList.add('matched'); card.classList.remove('flipped'); } else if(flippedIndices.includes(idx)) { card.innerText = shuffledCards[idx]; card.classList.add('flipped'); } else { card.innerText = '?'; card.classList.remove('flipped', 'matched'); } }); }
+        function onCardClick(idx) { if(lockedBoard || matchedState[idx] || flippedIndices.includes(idx) || flippedIndices.length === 2) return; flippedIndices.push(idx); updateBoardUI(); if(flippedIndices.length === 2) checkMatch(); }
+        function checkMatch() { const [i1,i2] = flippedIndices; if(shuffledCards[i1] === shuffledCards[i2]) { matchedState[i1]=matchedState[i2]=true; matchedPairs++; updateBoardUI(); flippedIndices=[]; if(matchedPairs === emojis.length/2) { gameStatus.innerText = '🏆 ¡LO LOGRASTE, AMOR MÍO! Desbloqueaste el amor eterno 🏆'; triggerEmotionalConfetti(); } else gameStatus.innerText = '💖 ¡Pareja encontrada! Como tú y yo, destinados 💖'; } else { gameStatus.innerText = '💔 No te rindas, mi amor, el verdadero amor siempre encuentra su camino 💔'; lockedBoard=true; setTimeout(()=>{ const cards=document.querySelectorAll('.memory-card'); cards[i1].innerText='?'; cards[i2].innerText='?'; cards[i1].classList.remove('flipped'); cards[i2].classList.remove('flipped'); flippedIndices=[]; lockedBoard=false; updateBoardUI(); gameStatus.innerText = '✨ Sigue buscando, cada par es un símbolo de nuestro amor ✨'; },800); } }
+        function triggerEmotionalConfetti() { for(let i=0;i<150;i++) { let conf = document.createElement('div'); conf.style.position='fixed'; conf.style.width='10px'; conf.style.height='10px'; conf.style.backgroundColor=`hsl(${Math.random()*360}, 85%, 65%)`; conf.style.left=Math.random()*window.innerWidth+'px'; conf.style.top='-20px'; conf.style.borderRadius='50%'; conf.style.pointerEvents='none'; conf.style.zIndex='9999'; document.body.appendChild(conf); conf.animate([{transform:'translateY(0px)', opacity:0.9},{transform:`translateY(${window.innerHeight+150}px) rotate(${Math.random()*720}deg)`, opacity:0}],{duration:1800+Math.random()*700}); setTimeout(()=>conf.remove(),2000); } }
+        initGame();
+        
+        // RUEDA DEL AMOR - MENSAJES QUE HACEN LLORAR DE ALEGRÍA
+        const loveMessages = [
+            "💖 ELOISA, desde que te conocí supe que mi vida sería un cuento de hadas. Eres mi final feliz. 💖",
+            "🌹 FERLEE te ama con cada latido, con cada estrella, con cada suspiro. Eres mi razón de ser. 🌹",
+            "💎 Cada día a tu lado es un regalo del cielo. Gracias por existir, mi amor eterno. 💎",
+            "✨ Cuando me miras, el mundo se detiene y solo existes tú. Te amo con toda mi alma. ✨",
+            "🌸 Eres el sueño que nunca quiero despertar, mi compañera, mi todo. Te amo, ELOISA. 🌸",
+            "💘 En cada vida te elegiría, porque nuestro amor es más fuerte que el tiempo y el destino. 💘",
+            "⭐ Tu sonrisa ilumina mi oscuridad, tus abrazos son mi hogar. Eres mi milagro diario. ⭐",
+            "💞 Prometo amarte hasta que el sol se apague y las estrellas dejen de brillar. Eres mi alma gemela. 💞"
+        ];
+        const wheelResult = document.getElementById('wheelResultDisplay');
+        const spinBtn = document.getElementById('spinWheelBtn');
+        if(spinBtn) spinBtn.addEventListener('click', () => {
+            const randomMsg = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+            wheelResult.innerHTML = `🎡✨ ${randomMsg} ✨🎡`;
+            wheelResult.style.animation = 'glowSpinLove 0.5s ease';
+            setTimeout(() => wheelResult.style.animation = '', 500);
+        });
+        
+        // PARTÍCULAS ROMÁNTICAS EXTENDIDAS
+        const canvas = document.getElementById('magicCanvas'); let ctx = canvas.getContext('2d'), w, h, particles = [];
+        function resizeCanvas() { w = window.innerWidth; h = window.innerHeight; canvas.width = w; canvas.height = h; }
+        window.addEventListener('resize', resizeCanvas); resizeCanvas();
+        class RomanticParticle { constructor() { this.x = Math.random() * w; this.y = Math.random() * h; this.size = Math.random() * 14 + 2; this.speedY = Math.random() * 1.3 + 0.4; this.speedX = (Math.random() - 0.5)*0.28; this.type = Math.floor(Math.random() * 3); this.opacity = Math.random() * 0.7 + 0.3; } update() { this.y -= this.speedY; this.x += this.speedX; if(this.y + this.size < 0) { this.y = h + this.size; this.x = Math.random() * w; } if(this.x < -this.size) this.x = w+this.size; if(this.x > w+this.size) this.x = -this.size; } draw() { if(!ctx) return; ctx.save(); if(this.type===0) { ctx.font = `${this.size*1.7}px "Segoe UI", "Apple Color Emoji"`; ctx.fillStyle = `rgba(255, 110, 110, ${this.opacity})`; ctx.fillText("❤️", this.x, this.y); } else if(this.type===1) { ctx.beginPath(); ctx.arc(this.x, this.y, this.size*0.7, 0, Math.PI*2); ctx.fillStyle = `rgba(255, 150, 120, ${this.opacity})`; ctx.fill(); } else { ctx.font = `${this.size*1.5}px "Segoe UI"`; ctx.fillStyle = `rgba(255, 200, 150, ${this.opacity})`; ctx.fillText("🌸", this.x, this.y); } ctx.restore(); } }
+        function initParticlesHeavy() { particles = []; for(let i=0;i<240;i++) particles.push(new RomanticParticle()); animateParticles(); }
+        function animateParticles() { if(!ctx) return; ctx.clearRect(0,0,w,h); for(let p of particles) { p.update(); p.draw(); } requestAnimationFrame(animateParticles); }
+        initParticlesHeavy();
+        
+        console.log("💖✨ CÓDIGO PREMIUM: Para cambiar la imagen busca la línea que contiene id='couplePhoto' y modifica el atributo src con la URL de tu foto. Ejemplo: <img id='couplePhoto' src='tu-imagen.jpg'> ✨💖");
+    })();
+</script>
+</body>
+</html>
