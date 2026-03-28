@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -419,14 +418,12 @@
         <circle cx="150" cy="170" r="8" fill="#ffbfa3"/>
     </svg>
 </div>
-
-
 <div id="welcomeOverlay" class="welcome-luxury">
     <div class="welcome-card-premium">
         <h1>💗 Alma Gemela Eterna 💗</h1>
         <div class="names-glow">🌸 ELOISA MARIBEL COO 🌸</div>
         <div style="font-size: 1.4rem; font-weight:600; color:#cc6f6f;">&</div>
-        <div class="names-glow" style="font-size:2.2rem;">💎 FERLEE ARBERY JEISON 💎</div>
+        <div class="names-glow" style="font-size:2.2rem;">💎 FERLEE 💎</div>
         <p style="margin: 1rem 0; font-size:1.2rem;">Cada latido de mi corazón es un verso escrito para ti. Prepárate para sentir el amor más puro.</p>
         <button class="btn-start" id="startExperience">🌹 Abre tu corazón 🌹</button>
     </div>
@@ -436,8 +433,8 @@
     <div class="love-letter-card" id="loveLetterCard">
         <div class="cover-romantic" id="coverCard">
             <div class="avatar-circle">
-                <!-- INSTRUCCIÓN: PARA CAMBIAR LA IMAGEN, REEMPLAZA LA URL O COLOCA TU RUTA EN EL src -->
-                <img id="couplePhoto" src="blob:https://web.whatsapp.com/7d98938c-5f1f-4224-b06c-8821eff30151" alt="ELOISA & FERLEE - Amor Eterno">
+                <!-- ⭐ INSTRUCCIÓN: REEMPLAZA LA URL DE ABAJO CON EL ENLACE DIRECTO DE TU FOTO ⭐ -->
+                <img id="couplePhoto" src="https://i.ibb.co/XZzbyzL2/7d98938c-5f1f-4224-b06c-8821eff30151.jpg" alt="ELOISA & FERLEE - Amor Eterno">
             </div>
             <h2>✨ ELOISA ❤️ FERLEE ✨</h2>
             <div class="cover-names">💕 Unidos por el destino, enamorados por siempre 💕</div>
@@ -446,7 +443,7 @@
         </div>
         <div class="letter-inside-premium">
             <div class="typewriter-area"><div id="loveStoryText"></div><span id="cursorPro" class="cursor-blink-pro"></span></div>
-            <div class="signature-names">💖 Eternamente tuyo — FERLEE ARBERY JEISON & ELOISA MARIBEL 💖</div>
+            <div class="signature-names">💖 Eternamente tuyo — FERLEE & ELOISA MARIBEL 💖</div>
             
             <div class="game-section">
                 <div class="game-title">💝 Juego del Corazón: Encuentra las almas gemelas 💝</div>
@@ -467,10 +464,10 @@
 
 <script>
     (function() {
-        // ========== TEXTO ROMÁNTICO QUE HARÁ LLORAR DE ALEGRÍA ==========
+        // ========== TEXTO ROMÁNTICO QUE HARÁ LLORAR DE ALEGRÍA - SOLO FERLEE ==========
         const romanticStory = `🌹 MI AMADA ELOISA MARIBEL COO 🌹
 
-Desde que llegaste a mi vida, el universo encontró su sentido. Cada amanecer es más brillante porque tú existes, cada estrella parpadea celebrando tu nombre. FERLEE ARBERY JEISON escribe estas letras con lágrimas de felicidad, porque tú, mi amor, eres el milagro que nunca creí merecer.
+Desde que llegaste a mi vida, el universo encontró su sentido. Cada amanecer es más brillante porque tú existes, cada estrella parpadea celebrando tu nombre. YO, FERLEE, escribo estas letras con lágrimas de felicidad, porque tú, mi amor, eres el milagro que nunca creí merecer.
 
 Tu risa es la melodía que calma mis tormentas, tu mirada es el hogar donde mi alma descansa. Recuerdo cada instante a tu lado como si fuera la primera vez: tus manos, tu voz, tu ternura infinita. Contigo aprendí que el amor verdadero no se busca, simplemente llega y transforma todo.
 
@@ -479,7 +476,7 @@ Hoy quiero decirte frente al universo que eres mi mayor tesoro. Prometo cuidarte
 Gracias por existir, ELOISA. Gracias por permitirme amarte. Este amor es eterno, como las estrellas, como el latido que nunca dejará de buscarte. 💖
 
 Con todo mi ser, para siempre,
-FERLEE ARBERY JEISON. 🌹💎`;
+FERLEE. 🌹💎`;
 
         let typingTimer = null, isOpened = false;
         const storyDiv = document.getElementById('loveStoryText'), cursorSpan = document.getElementById('cursorPro');
@@ -533,16 +530,18 @@ FERLEE ARBERY JEISON. 🌹💎`;
         function triggerEmotionalConfetti() { for(let i=0;i<150;i++) { let conf = document.createElement('div'); conf.style.position='fixed'; conf.style.width='10px'; conf.style.height='10px'; conf.style.backgroundColor=`hsl(${Math.random()*360}, 85%, 65%)`; conf.style.left=Math.random()*window.innerWidth+'px'; conf.style.top='-20px'; conf.style.borderRadius='50%'; conf.style.pointerEvents='none'; conf.style.zIndex='9999'; document.body.appendChild(conf); conf.animate([{transform:'translateY(0px)', opacity:0.9},{transform:`translateY(${window.innerHeight+150}px) rotate(${Math.random()*720}deg)`, opacity:0}],{duration:1800+Math.random()*700}); setTimeout(()=>conf.remove(),2000); } }
         initGame();
         
-        // RUEDA DEL AMOR - MENSAJES QUE HACEN LLORAR DE ALEGRÍA
+        // RUEDA DEL AMOR - MENSAJES QUE HACEN LLORAR DE ALEGRÍA (con FERLEE)
         const loveMessages = [
-            "💖 ELOISA, desde que te conocí supe que mi vida sería un cuento de hadas. Eres mi final feliz. 💖",
+            "💖 ELOISA, desde que te conocí supe que mi vida sería un cuento de hadas. Eres mi final feliz. Con amor, FERLEE. 💖",
             "🌹 FERLEE te ama con cada latido, con cada estrella, con cada suspiro. Eres mi razón de ser. 🌹",
-            "💎 Cada día a tu lado es un regalo del cielo. Gracias por existir, mi amor eterno. 💎",
-            "✨ Cuando me miras, el mundo se detiene y solo existes tú. Te amo con toda mi alma. ✨",
-            "🌸 Eres el sueño que nunca quiero despertar, mi compañera, mi todo. Te amo, ELOISA. 🌸",
+            "💎 Cada día a tu lado es un regalo del cielo. Gracias por existir, mi amor eterno. — FERLEE 💎",
+            "✨ Cuando me miras, el mundo se detiene y solo existes tú. Te amo con toda mi alma, ELOISA. ✨",
+            "🌸 Eres el sueño que nunca quiero despertar, mi compañera, mi todo. Te amo. — FERLEE 🌸",
             "💘 En cada vida te elegiría, porque nuestro amor es más fuerte que el tiempo y el destino. 💘",
             "⭐ Tu sonrisa ilumina mi oscuridad, tus abrazos son mi hogar. Eres mi milagro diario. ⭐",
-            "💞 Prometo amarte hasta que el sol se apague y las estrellas dejen de brillar. Eres mi alma gemela. 💞"
+            "💞 Prometo amarte hasta que el sol se apague y las estrellas dejen de brillar. Eres mi alma gemela, ELOISA. Con todo mi corazón, FERLEE. 💞",
+            "🌹 Eres la mujer más hermosa que el universo pudo crear. Gracias por permitirme amarte. FERLEE. 🌹",
+            "💎 Cada momento contigo es eterno. Te llevo en mi alma, mi amada ELOISA. Con amor, FERLEE. 💎"
         ];
         const wheelResult = document.getElementById('wheelResultDisplay');
         const spinBtn = document.getElementById('spinWheelBtn');
@@ -562,7 +561,7 @@ FERLEE ARBERY JEISON. 🌹💎`;
         function animateParticles() { if(!ctx) return; ctx.clearRect(0,0,w,h); for(let p of particles) { p.update(); p.draw(); } requestAnimationFrame(animateParticles); }
         initParticlesHeavy();
         
-        console.log("💖✨ CÓDIGO PREMIUM: Para cambiar la imagen busca la línea que contiene id='couplePhoto' y modifica el atributo src con la URL de tu foto. Ejemplo: <img id='couplePhoto' src='tu-imagen.jpg'> ✨💖");
+        console.log("💖✨ CÓDIGO PREMIUM: El nombre del remitente ahora es solo FERLEE. Para cambiar la foto busca la línea con id='couplePhoto' y modifica el src. ✨💖");
     })();
 </script>
 </body>
