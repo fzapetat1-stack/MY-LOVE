@@ -27,7 +27,6 @@
             cursor: default;
         }
 
-        /* Fondo de partículas romántico */
         #magicCanvas {
             position: fixed;
             top: 0;
@@ -38,7 +37,6 @@
             z-index: 1;
         }
 
-        /* ÁRBOL DE CORAZONES PREMIUM */
         .heart-tree-container {
             position: fixed;
             bottom: 20px;
@@ -64,7 +62,6 @@
             50% { transform: translateY(-12px) rotate(1deg); }
         }
 
-        /* OVERLAY BIENVENIDA */
         .welcome-luxury {
             position: fixed;
             top: 0;
@@ -127,7 +124,6 @@
         }
         .btn-start:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 30px 50px rgba(200,70,50,0.8); }
 
-        /* CARTA PRINCIPAL */
         .main-container {
             position: relative;
             z-index: 150;
@@ -143,7 +139,6 @@
             transition: all 0.6s cubic-bezier(0.2,0.95,0.3,1.1);
         }
 
-        /* PORTADA */
         .cover-romantic {
             background: linear-gradient(145deg, #fff9f2, #fff0e8);
             padding: 2.8rem 2rem 3.2rem;
@@ -214,7 +209,6 @@
             display: inline-block;
         }
 
-        /* INTERIOR CARTA */
         .letter-inside-premium {
             transform: scaleY(0);
             transform-origin: top;
@@ -225,7 +219,7 @@
         }
         .love-letter-card.opened .letter-inside-premium {
             transform: scaleY(1);
-            max-height: 2500px;
+            max-height: 2800px;
             opacity: 1;
             padding: 2.2rem 2.8rem;
         }
@@ -256,7 +250,6 @@
             margin-top: 1rem;
         }
 
-        /* JUEGO MEMORIA MEJORADO */
         .game-section {
             margin-top: 2.5rem;
             background: linear-gradient(135deg, #fff6ef, #ffede3);
@@ -303,7 +296,6 @@
             margin-top: 15px;
         }
 
-        /* RUEDA DEL AMOR ULTRA TIERNA */
         .premium-game-container {
             margin-top: 30px;
             background: linear-gradient(145deg, #fff3ec, #ffe6dc);
@@ -348,7 +340,7 @@
             display: inline-block;
             font-weight: 700;
             color: #a14232;
-            max-width: 450px;
+            max-width: 500px;
             word-break: break-word;
             border: 1px solid #ffc8ae;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -378,11 +370,10 @@
             .memory-grid { gap: 10px; max-width: 340px; }
             .memory-card { font-size: 1.8rem; }
             .letter-inside-premium { padding: 1.2rem; }
-            .wheel-result { font-size: 1rem; padding: 12px 18px; }
+            .wheel-result { font-size: 1rem; padding: 12px 18px; max-width: 320px; }
         }
         .heart-tree-container { width: 190px; height: 220px; bottom: 12px; left: 12px; }
         
-        /* INSTRUCCIÓN PARA CAMBIAR IMAGEN */
         .image-instruction {
             position: fixed;
             bottom: 15px;
@@ -418,6 +409,7 @@
         <circle cx="150" cy="170" r="8" fill="#ffbfa3"/>
     </svg>
 </div>
+
 <div id="welcomeOverlay" class="welcome-luxury">
     <div class="welcome-card-premium">
         <h1>💗 Alma Gemela Eterna 💗</h1>
@@ -433,7 +425,6 @@
     <div class="love-letter-card" id="loveLetterCard">
         <div class="cover-romantic" id="coverCard">
             <div class="avatar-circle">
-                <!-- ⭐ INSTRUCCIÓN: REEMPLAZA LA URL DE ABAJO CON EL ENLACE DIRECTO DE TU FOTO ⭐ -->
                 <img id="couplePhoto" src="https://i.ibb.co/XZzbyzL2/7d98938c-5f1f-4224-b06c-8821eff30151.jpg" alt="ELOISA & FERLEE - Amor Eterno">
             </div>
             <h2>✨ ELOISA ❤️ FERLEE ✨</h2>
@@ -455,7 +446,7 @@
                 <div class="wheel-title"><i class="fas fa-heartbeat"></i> 🌟 RUEDA DE LOS SUEÑOS DEL ALMA 🌟 <i class="fas fa-gem"></i></div>
                 <div class="wheel-spin-area">
                     <button class="wheel-btn" id="spinWheelBtn">🎡 GIRA EL AMOR 🎡</button>
-                    <div class="wheel-result" id="wheelResultDisplay">💌 Cada mensaje es un susurro del corazón para ti</div>
+                    <div class="wheel-result" id="wheelResultDisplay">💌 Cada mensaje es un pedacito de mi corazón para ti</div>
                 </div>
             </div>
         </div>
@@ -464,7 +455,7 @@
 
 <script>
     (function() {
-        // ========== TEXTO ROMÁNTICO QUE HARÁ LLORAR DE ALEGRÍA - SOLO FERLEE ==========
+        // ========== TEXTO ROMÁNTICO EXTENDIDO - FERLEE ==========
         const romanticStory = `🌹 MI AMADA ELOISA MARIBEL COO 🌹
 
 Desde que llegaste a mi vida, el universo encontró su sentido. Cada amanecer es más brillante porque tú existes, cada estrella parpadea celebrando tu nombre. YO, FERLEE, escribo estas letras con lágrimas de felicidad, porque tú, mi amor, eres el milagro que nunca creí merecer.
@@ -517,7 +508,7 @@ FERLEE. 🌹💎`;
             initParticlesHeavy(); 
         });
         
-        // JUEGO MEMORIA PREMIUM (sin botón reiniciar)
+        // JUEGO MEMORIA PREMIUM
         const emojis = ['❤️', '💎', '🌹', '💘', '❤️', '💎', '🌹', '💘'];
         let shuffledCards = [], flippedIndices = [], lockedBoard = false, matchedPairs = 0, matchedState = new Array(8).fill(false);
         let gameGrid = document.getElementById('memoryGrid'), gameStatus = document.getElementById('gameStatus');
@@ -527,22 +518,30 @@ FERLEE. 🌹💎`;
         function updateBoardUI() { const cards = document.querySelectorAll('.memory-card'); cards.forEach((card, idx) => { if(matchedState[idx]) { card.innerText = shuffledCards[idx]; card.classList.add('matched'); card.classList.remove('flipped'); } else if(flippedIndices.includes(idx)) { card.innerText = shuffledCards[idx]; card.classList.add('flipped'); } else { card.innerText = '?'; card.classList.remove('flipped', 'matched'); } }); }
         function onCardClick(idx) { if(lockedBoard || matchedState[idx] || flippedIndices.includes(idx) || flippedIndices.length === 2) return; flippedIndices.push(idx); updateBoardUI(); if(flippedIndices.length === 2) checkMatch(); }
         function checkMatch() { const [i1,i2] = flippedIndices; if(shuffledCards[i1] === shuffledCards[i2]) { matchedState[i1]=matchedState[i2]=true; matchedPairs++; updateBoardUI(); flippedIndices=[]; if(matchedPairs === emojis.length/2) { gameStatus.innerText = '🏆 ¡LO LOGRASTE, AMOR MÍO! Desbloqueaste el amor eterno 🏆'; triggerEmotionalConfetti(); } else gameStatus.innerText = '💖 ¡Pareja encontrada! Como tú y yo, destinados 💖'; } else { gameStatus.innerText = '💔 No te rindas, mi amor, el verdadero amor siempre encuentra su camino 💔'; lockedBoard=true; setTimeout(()=>{ const cards=document.querySelectorAll('.memory-card'); cards[i1].innerText='?'; cards[i2].innerText='?'; cards[i1].classList.remove('flipped'); cards[i2].classList.remove('flipped'); flippedIndices=[]; lockedBoard=false; updateBoardUI(); gameStatus.innerText = '✨ Sigue buscando, cada par es un símbolo de nuestro amor ✨'; },800); } }
-        function triggerEmotionalConfetti() { for(let i=0;i<150;i++) { let conf = document.createElement('div'); conf.style.position='fixed'; conf.style.width='10px'; conf.style.height='10px'; conf.style.backgroundColor=`hsl(${Math.random()*360}, 85%, 65%)`; conf.style.left=Math.random()*window.innerWidth+'px'; conf.style.top='-20px'; conf.style.borderRadius='50%'; conf.style.pointerEvents='none'; conf.style.zIndex='9999'; document.body.appendChild(conf); conf.animate([{transform:'translateY(0px)', opacity:0.9},{transform:`translateY(${window.innerHeight+150}px) rotate(${Math.random()*720}deg)`, opacity:0}],{duration:1800+Math.random()*700}); setTimeout(()=>conf.remove(),2000); } }
+        function triggerEmotionalConfetti() { for(let i=0;i<180;i++) { let conf = document.createElement('div'); conf.style.position='fixed'; conf.style.width='10px'; conf.style.height='10px'; conf.style.backgroundColor=`hsl(${Math.random()*360}, 85%, 65%)`; conf.style.left=Math.random()*window.innerWidth+'px'; conf.style.top='-20px'; conf.style.borderRadius='50%'; conf.style.pointerEvents='none'; conf.style.zIndex='9999'; document.body.appendChild(conf); conf.animate([{transform:'translateY(0px)', opacity:0.9},{transform:`translateY(${window.innerHeight+150}px) rotate(${Math.random()*720}deg)`, opacity:0}],{duration:1800+Math.random()*700}); setTimeout(()=>conf.remove(),2000); } }
         initGame();
         
-        // RUEDA DEL AMOR - MENSAJES QUE HACEN LLORAR DE ALEGRÍA (con FERLEE)
+        // ========== RUEDA DEL AMOR - MENSAJES ULTRA TIERNOS (SIN NOMBRE FERLEE) ==========
         const loveMessages = [
-            "💖 ELOISA, desde que te conocí supe que mi vida sería un cuento de hadas. Eres mi final feliz. Con amor, FERLEE. 💖",
-            "🌹 FERLEE te ama con cada latido, con cada estrella, con cada suspiro. Eres mi razón de ser. 🌹",
-            "💎 Cada día a tu lado es un regalo del cielo. Gracias por existir, mi amor eterno. — FERLEE 💎",
-            "✨ Cuando me miras, el mundo se detiene y solo existes tú. Te amo con toda mi alma, ELOISA. ✨",
-            "🌸 Eres el sueño que nunca quiero despertar, mi compañera, mi todo. Te amo. — FERLEE 🌸",
-            "💘 En cada vida te elegiría, porque nuestro amor es más fuerte que el tiempo y el destino. 💘",
-            "⭐ Tu sonrisa ilumina mi oscuridad, tus abrazos son mi hogar. Eres mi milagro diario. ⭐",
-            "💞 Prometo amarte hasta que el sol se apague y las estrellas dejen de brillar. Eres mi alma gemela, ELOISA. Con todo mi corazón, FERLEE. 💞",
-            "🌹 Eres la mujer más hermosa que el universo pudo crear. Gracias por permitirme amarte. FERLEE. 🌹",
-            "💎 Cada momento contigo es eterno. Te llevo en mi alma, mi amada ELOISA. Con amor, FERLEE. 💎"
+            "💖 ELOISA, eres la razón por la que sonrío cada mañana. Te amo más de lo que las palabras pueden expresar. Con todo mi corazón. 💖",
+            "🌹 Mi amor, cada día a tu lado es un sueño del que nunca quiero despertar. Gracias por existir. 🌹",
+            "💎 Eres mi refugio, mi paz, mi hogar. No hay un solo latido que no lleve tu nombre. Te amo, ELOISA. 💎",
+            "✨ Cuando el mundo se vuelve gris, solo verte me devuelve los colores. Eres mi sol, mi luna, mi todo. ✨",
+            "🌸 Si pudiera regalarte algo sería la certeza de que te amaré en cada vida, en cada universo. Siempre tuyo. 🌸",
+            "💘 ELOISA, desde que llegaste, todo tiene sentido. Mi alma te reconoció como su otra mitad. Te amo infinitamente. 💘",
+            "⭐ Tu sonrisa ilumina mi oscuridad, tus abrazos son mi medicina. Eres el milagro más hermoso de mi vida. ⭐",
+            "💞 Prometo amarte hasta que las estrellas se apaguen y el tiempo deje de existir. Eres mi alma gemela, ELOISA. 💞",
+            "🌹 Eres la mujer más hermosa que ha existido y existirá. Me siento el ser más afortunado del universo por tenerte. 🌹",
+            "💎 Cada momento contigo es un tesoro que guardo en lo más profundo de mi corazón. Te amo, mi amor eterno. 💎",
+            "🌟 No hay distancia ni tiempo que pueda apagar lo que siento por ti. Eres mi motivo para ser mejor cada día. 🌟",
+            "💖 Si pudiera pedir un deseo, sería seguir amándote en cada latido de mi existencia. Eres mi todo, ELOISA. 💖",
+            "🌹 Desde que te conocí, mi vida se llenó de magia. Eres mi cuento de hadas hecho realidad. Te amo, mi princesa. 🌹",
+            "💎 Eres mi mejor decisión, mi mayor alegría, mi razón para seguir adelante. Gracias por ser quien eres. 💎",
+            "✨ Cada vez que te veo, mi corazón late más fuerte. Eres mi latido favorito, mi razón de ser. ✨",
+            "🌸 Contigo aprendí que el amor verdadero existe. Gracias por enseñarme a amar de esta forma tan pura. 🌸",
+            "💖 Tu felicidad es mi felicidad. Verte sonreír es lo que más me llena el alma. Te amo con todo mi ser. 💖"
         ];
+        
         const wheelResult = document.getElementById('wheelResultDisplay');
         const spinBtn = document.getElementById('spinWheelBtn');
         if(spinBtn) spinBtn.addEventListener('click', () => {
@@ -552,16 +551,16 @@ FERLEE. 🌹💎`;
             setTimeout(() => wheelResult.style.animation = '', 500);
         });
         
-        // PARTÍCULAS ROMÁNTICAS EXTENDIDAS
+        // PARTÍCULAS ROMÁNTICAS
         const canvas = document.getElementById('magicCanvas'); let ctx = canvas.getContext('2d'), w, h, particles = [];
         function resizeCanvas() { w = window.innerWidth; h = window.innerHeight; canvas.width = w; canvas.height = h; }
         window.addEventListener('resize', resizeCanvas); resizeCanvas();
         class RomanticParticle { constructor() { this.x = Math.random() * w; this.y = Math.random() * h; this.size = Math.random() * 14 + 2; this.speedY = Math.random() * 1.3 + 0.4; this.speedX = (Math.random() - 0.5)*0.28; this.type = Math.floor(Math.random() * 3); this.opacity = Math.random() * 0.7 + 0.3; } update() { this.y -= this.speedY; this.x += this.speedX; if(this.y + this.size < 0) { this.y = h + this.size; this.x = Math.random() * w; } if(this.x < -this.size) this.x = w+this.size; if(this.x > w+this.size) this.x = -this.size; } draw() { if(!ctx) return; ctx.save(); if(this.type===0) { ctx.font = `${this.size*1.7}px "Segoe UI", "Apple Color Emoji"`; ctx.fillStyle = `rgba(255, 110, 110, ${this.opacity})`; ctx.fillText("❤️", this.x, this.y); } else if(this.type===1) { ctx.beginPath(); ctx.arc(this.x, this.y, this.size*0.7, 0, Math.PI*2); ctx.fillStyle = `rgba(255, 150, 120, ${this.opacity})`; ctx.fill(); } else { ctx.font = `${this.size*1.5}px "Segoe UI"`; ctx.fillStyle = `rgba(255, 200, 150, ${this.opacity})`; ctx.fillText("🌸", this.x, this.y); } ctx.restore(); } }
-        function initParticlesHeavy() { particles = []; for(let i=0;i<240;i++) particles.push(new RomanticParticle()); animateParticles(); }
+        function initParticlesHeavy() { particles = []; for(let i=0;i<260;i++) particles.push(new RomanticParticle()); animateParticles(); }
         function animateParticles() { if(!ctx) return; ctx.clearRect(0,0,w,h); for(let p of particles) { p.update(); p.draw(); } requestAnimationFrame(animateParticles); }
         initParticlesHeavy();
         
-        console.log("💖✨ CÓDIGO PREMIUM: El nombre del remitente ahora es solo FERLEE. Para cambiar la foto busca la línea con id='couplePhoto' y modifica el src. ✨💖");
+        console.log("💖✨ CÓDIGO PREMIUM COMPLETO: Rueda del Amor con mensajes ultra tiernos sin el nombre FERLEE. La foto ya está integrada. ✨💖");
     })();
 </script>
 </body>
